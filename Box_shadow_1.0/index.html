@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/custom.css">
+    <link href="https://fonts.googleapis.com/css?family=Asap+Condensed|Open+Sans" rel="stylesheet">
+    <title>Box Shadow Tools</title>
+</head>
+
+<body class="no-padding no-margin">
+    <div class="container">
+        <!-- left -->
+        <div class="left">
+            <form action="#" method="post">
+                <div class="left-sector">
+                    <div class="input-range">
+                        <div>
+                            <label for="width">Horizontal Length</label>
+                            <span class="right font">
+                                <input type="number" value="10"> px
+                            </span>
+                        </div>
+                        <input type="range" name="width" min="5" max="15" value="10">
+                    </div>
+                    <div class="input-range">
+                        <div>
+                            <label for="Length">Vertical Length</label>
+                            <span class="right font">
+                                <input type="number" value="10"> px
+                            </span>
+                        </div>
+                        <input type="range" name="Length" min="5" max="15" value="10">
+                    </div>
+                </div>
+                <div class="left-sector">
+                    <div class="input-range">
+                        <div>
+                            <label for="Blur">Blur Radius</label>
+                            <span class="right font">
+                                <input type="number" value="5"> px
+                            </span>
+                        </div>
+                        <input type="range" name="Blur" min="5" max="15" value="5">
+                    </div>
+                    <div class="input-range">
+                        <div>
+                            <label for="Spread">Spread Radius</label>
+                            <span class="right font">
+                                <input type="number" value="0"> px
+                            </span>
+                        </div>
+                        <input type="range" name="Spread" min="-5" max="5" value="0">
+                    </div>
+                </div>
+                <div class="left-sector">
+                    <div class="input-color">
+                        <label for="Shadow">Shadow Color</label>
+                        <span class="right font">
+                            <span class="color-button" id="color-button-1"></span>
+                        <!-- <div class="color-area">
+                            <div class="color-field">
+                                <div class="line-a"></div>
+                                <div class="line-b"></div>
+                            </div>
+                            <div class="color-grade">
+                                <span class="color-level"></span>
+                            </div>
+                            <div class="color-details">
+                                <div class="color-show">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <div class="color-img"></div>
+                                            </td>
+                                            <td>
+                                                <div class="color-img"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <label for="r-index">R</label>
+                                                    <input type="number" name="r-index" id="r-index">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <label for="h-index">H</label>
+                                                    <input type="number" name="h-index" id="h-index">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <label for="g-index">G</label>
+                                                    <input type="number" name="g-index" id="g-index">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <label for="s-index">S</label>
+                                                    <input type="number" name="s-index" id="s-index">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <label for="b1-index">B</label>
+                                                    <input type="number" name="b1-index" id="b1-index">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <label for="b2-index">B</label>
+                                                    <input type="number" name="b2-index" id="b2-index">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="color-show">
+                                    <span class="color-number">
+                            <label for="color-num">#</label>
+                            <input type="text" name="color-num" id="color-num" value="000000">
+                        </span>
+                                    <button></button>
+                                </div>
+                            </div>
+                        </div> -->
+                        <input type="text" value="#000000">
+                        </span>
+                    </div>
+                </div>
+                <div class="left-sector">
+                    <div class="input-color">
+                        <label for="Background">Background Color</label>
+                        <span class="right font">
+                            <span class="color-button"></span>
+                        <input type="text" value="#ffffff">
+                        </span>
+                    </div>
+                </div>
+                <div class="left-sector">
+                    <div class="input-color">
+                        <label for="Box">Box Color</label>
+                        <span class="right font">
+                            <span class="color-button"></span>
+                        <input type="text" value="#e7a61a">
+                        </span>
+                    </div>
+                </div>
+                <div class="left-sector">
+                    <div class="input-range">
+                        <div>
+                            <label for="Spread">Opacity</label>
+                            <span class="right font">
+                                <input type="number" value="0.75"> px
+                            </span>
+                        </div>
+                        <input type="range" name="Spread" min="0" max="1" value="0.75" step="0.01">
+                    </div>
+                </div>
+                <div class="left-sector">
+                    Outline & Inset
+                </div>
+            </form>
+        </div>
+        <!-- right -->
+         <div class="right border-container">
+            
+            <div class="color-area">
+                <div class="color-field">
+                    <div class="line-a"></div>
+                    <div class="line-b"></div>
+                </div>
+                <div class="color-grade">
+                    <span class="color-level" draggable="yes"></span>
+                </div>
+                <div class="color-details">
+                    <div class="color-show">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="color-img"></div>
+                                </td>
+                                <td>
+                                    <div class="color-img"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <label for="r-index">R</label>
+                                        <input type="number" name="r-index" id="r-index">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <label for="h-index">H</label>
+                                        <input type="number" name="h-index" id="h-index">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <label for="g-index">G</label>
+                                        <input type="number" name="g-index" id="g-index">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <label for="s-index">S</label>
+                                        <input type="number" name="s-index" id="s-index">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <label for="b1-index">B</label>
+                                        <input type="number" name="b1-index" id="b1-index">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <label for="b2-index">B</label>
+                                        <input type="number" name="b2-index" id="b2-index">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="color-show">
+                        <span class="color-number">
+                            <label for="color-num">#</label>
+                            <input type="text" name="color-num" id="color-num" value="000000">
+                        </span>
+                        <button></button>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/custom.js"></script>
+</body>
+
+</html>
