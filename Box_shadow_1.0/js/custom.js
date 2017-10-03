@@ -9,7 +9,7 @@ $(document).ready(function () {
             $(colpkr).slideUp();
             return false;
         },
-        onChange: function (hsb, hex, rgb) {
+        onSubmit: function (hsb, hex, rgb) {
             $('#color-custom-1').css('background-color', '#' + hex);
             $('#color-custom-1').next('input').val('#' + hex);
             Shadow_box.color = rgb;
@@ -27,7 +27,7 @@ $(document).ready(function () {
             $(colpkr).slideUp();
             return false;
         },
-        onChange: function (hsb, hex, rgb) {
+        onSubmit: function (hsb, hex, rgb) {
             $('#color-custom-2').css('background-color', '#' + hex);
             $('#color-custom-2').next('input').val('#' + hex);
             $('.border-container').css('background-color', '#' + hex);
@@ -43,7 +43,7 @@ $(document).ready(function () {
             $(colpkr).slideUp();
             return false;
         },
-        onChange: function (hsb, hex, rgb) {
+        onSubmit: function (hsb, hex, rgb) {
             $('#color-custom-3').css('background-color', '#' + hex);
             $('#color-custom-3').next('input').val('#' + hex);
             $('.expression').css('background-color', '#' + hex);
@@ -57,16 +57,16 @@ $(document).ready(function () {
     $('.left input[type=number], .left input[type=text], .left input[type=range]').on('input', function () {
         if ($(this).attr('name') == "width") {
             Shadow_box.width = $(this).val();
-            $('.contents span.width').html(Shadow_box.width +'px');
+            $('.contents span.width').html(Shadow_box.width + 'px');
         } else if ($(this).attr('name') == "Length") {
             Shadow_box.height = $(this).val();
-            $('.contents span.height').html(Shadow_box.height +'px');
+            $('.contents span.height').html(Shadow_box.height + 'px');
         } else if ($(this).attr('name') == "Blur") {
             Shadow_box.blur = $(this).val();
-            $('.contents span.blur').html(Shadow_box.blur +'px');
+            $('.contents span.blur').html(Shadow_box.blur + 'px');
         } else if ($(this).attr('name') == "Spread") {
             Shadow_box.spread = $(this).val();
-            $('.contents span.spread').html(Shadow_box.spread +'px');
+            $('.contents span.spread').html(Shadow_box.spread + 'px');
         } else if ($(this).attr('name') == "Opacity") {
             Shadow_box.opacity = $(this).val();
             $('.contents span.color').html('rgba(' + Shadow_box.color.r + ',' + Shadow_box.color.g + ',' + Shadow_box.color.b + ',' + Shadow_box.opacity + ')');
@@ -79,17 +79,19 @@ $(document).ready(function () {
             '--bs-color': 'rgba(' + Shadow_box.color.r + ',' + Shadow_box.color.g + ',' + Shadow_box.color.b + ',' + Shadow_box.opacity + ')',
         });
     });
-    $('.left input[name=switch]').on('input',function(){
-        if($(this).val()==1){
+    $('.left input[name=switch]').on('input', function () {
+        if ($(this).val() == 1) {
             $('.expression').css({
                 '--bs-inset': 'inset',
             });
-        }else{
+        } else {
             $('.expression').css({
                 '--bs-inset': '',
             });
         };
     });
+    change_color('div.colorpicker_current_color');
+    change_color('div.colorpicker_new_color');
 });
 function input_range_change(ipt1, ipt2) {
     $(ipt1).on('input', function () {
@@ -106,4 +108,17 @@ var Shadow_box = {
     spread: 0,
     opacity: 0.75,
     color: { r: 0, g: 0, b: 0 },
-}
+};
+function change_color(obj) {
+    $(obj).on('click', function () {
+        var current_color = this.parentElement.id;
+        var color_sector = $(obj);
+        if (current_color == color_sector[0].parentElement.id) {
+            $('.expression').css('--bs-color', 'rgba(' + this.style.backgroundColor.substring(4, this.style.backgroundColor.length - 1) + ',' + Shadow_box.opacity + ')');
+        } else if (current_color == color_sector[1].parentElement.id) {
+            $('.border-container').css('background-color', this.style.backgroundColor);
+        } else if (current_color == color_sector[2].parentElement.id) {
+            $('.expression').css('background-color', this.style.backgroundColor);
+        };
+    });
+};

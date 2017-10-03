@@ -22,19 +22,19 @@
                         <div>
                             <label for="width">Horizontal Length</label>
                             <span class="right font">
-                                <input type="number" name="width" value="10"> px
+                                <input type="number" name="width" min="-50" max="50" value="10"> px
                             </span>
                         </div>
-                        <input type="range" name="width" min="0" max="20" value="10">
+                        <input type="range" name="width" min="-50" max="50" value="10">
                     </div>
                     <div class="input-range" id="input-range-2">
                         <div>
                             <label for="Length">Vertical Length</label>
                             <span class="right font">
-                                <input type="number" name="Length" value="10"> px
+                                <input type="number" name="Length" min="-50" max="50" value="10"> px
                             </span>
                         </div>
-                        <input type="range" name="Length" min="0" max="20" value="10">
+                        <input type="range" name="Length" min="-50" max="50" value="10">
                     </div>
                 </div>
                 <div class="left-sector">
@@ -42,19 +42,19 @@
                         <div>
                             <label for="Blur">Blur Radius</label>
                             <span class="right font">
-                                <input type="number" name="Blur" value="5"> px
+                                <input type="number" name="Blur" min="0" max="20" value="5"> px
                             </span>
                         </div>
-                        <input type="range" name="Blur" min="5" max="15" value="5">
+                        <input type="range" name="Blur" min="0" max="20" value="5">
                     </div>
                     <div class="input-range" id="input-range-4">
                         <div>
                             <label for="Spread">Spread Radius</label>
                             <span class="right font">
-                                <input type="number" name="Spread" value="0"> px
+                                <input type="number" name="Spread" min="-30" max="30" value="0"> px
                             </span>
                         </div>
-                        <input type="range" name="Spread" min="-10" max="10" value="0">
+                        <input type="range" name="Spread" min="-30" max="30" value="0">
                     </div>
                 </div>
                 <div class="left-sector">
@@ -89,7 +89,7 @@
                         <div>
                             <label for="Opacity">Opacity</label>
                             <span class="right font">
-                                <input type="number" name="Opacity" value="0.75"> 
+                                <input type="number" name="Opacity" min="0" max="1" value="0.75"> 
                             </span>
                         </div>
                         <input type="range" name="Opacity" min="0" max="1" value="0.75" step="0.01">
