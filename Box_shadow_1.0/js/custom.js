@@ -1,25 +1,103 @@
 $(document).ready(function () {
-    var v_b_isMouseDown = false;
-    $('.color-grade').on('mousedown', function (event) {                
-        v_b_isMouseDown = true;
-        $(document).mousemove(function (event1){
-            if (v_b_isMouseDown) {
-                var y = Math.round(event1.pageY - $('.color-grade').offset().top);
-                if (y >= 0 && y <= 256) {
-                    $('.color-level').css('top', y);                    
-                };
-            }else{
-                $(document).off('mousemove',this);           
-            }
-        });        
-    }).on('mouseup',function(){
-         v_b_isMouseDown = false;         
+    $('#color-custom-1').ColorPicker({
+        color: '#0000ff',
+        onShow: function (colpkr) {
+            $(colpkr).slideDown();
+            return false;
+        },
+        onHide: function (colpkr) {
+            $(colpkr).slideUp();
+            return false;
+        },
+        onChange: function (hsb, hex, rgb) {
+            $('#color-custom-1').css('background-color', '#' + hex);
+            $('#color-custom-1').next('input').val('#' + hex);
+            Shadow_box.color = rgb;
+            $('.expression').css('--bs-color', 'rgba(' + Shadow_box.color.r + ',' + Shadow_box.color.g + ',' + Shadow_box.color.b + ',' + Shadow_box.opacity + ')');
+        }
     });
-    $('span#color-button-1').on('click', function () {
-        if ($('div.color-area').hasClass('active')) {
-            $('div.color-area').removeClass('active');
-        } else {
-            $('div.color-area').addClass('active');
+    $('#color-custom-2').ColorPicker({
+        color: '#0000ff',
+        onShow: function (colpkr) {
+            $(colpkr).slideDown();
+            return false;
+        },
+        onHide: function (colpkr) {
+            $(colpkr).slideUp();
+            return false;
+        },
+        onChange: function (hsb, hex, rgb) {
+            $('#color-custom-2').css('background-color', '#' + hex);
+            $('#color-custom-2').next('input').val('#' + hex);
+            $('.border-container').css('background-color', '#' + hex);
+        }
+    });
+    $('#color-custom-3').ColorPicker({
+        color: '#0000ff',
+        onShow: function (colpkr) {
+            $(colpkr).slideDown();
+            return false;
+        },
+        onHide: function (colpkr) {
+            $(colpkr).slideUp();
+            return false;
+        },
+        onChange: function (hsb, hex, rgb) {
+            $('#color-custom-3').css('background-color', '#' + hex);
+            $('#color-custom-3').next('input').val('#' + hex);
+            $('.expression').css('background-color', '#' + hex);
+        }
+    });
+    input_range_change($('div#input-range-1 input')[0], $('div#input-range-1 input')[1]);
+    input_range_change($('div#input-range-2 input')[0], $('div#input-range-2 input')[1]);
+    input_range_change($('div#input-range-3 input')[0], $('div#input-range-3 input')[1]);
+    input_range_change($('div#input-range-4 input')[0], $('div#input-range-4 input')[1]);
+    input_range_change($('div#input-range-5 input')[0], $('div#input-range-5 input')[1]);
+    $('.left input[type=number], .left input[type=text], .left input[type=range]').on('input', function () {
+        if ($(this).attr('name') == "width") {
+            Shadow_box.width = $(this).val();
+        } else if ($(this).attr('name') == "Length") {
+            Shadow_box.height = $(this).val();
+        } else if ($(this).attr('name') == "Blur") {
+            Shadow_box.blur = $(this).val();
+        } else if ($(this).attr('name') == "Spread") {
+            Shadow_box.spread = $(this).val();
+        } else if ($(this).attr('name') == "Opacity") {
+            Shadow_box.opacity = $(this).val();
+        }
+        $('.expression').css({
+            '--bs-width': Shadow_box.width + "px",
+            '--bs-height': Shadow_box.height + "px",
+            '--bs-blur': Shadow_box.blur + "px",
+            '--bs-spread': Shadow_box.spread + "px",
+            '--bs-color': 'rgba(' + Shadow_box.color.r + ',' + Shadow_box.color.g + ',' + Shadow_box.color.b + ',' + Shadow_box.opacity + ')',
+        });
+    });
+    $('.left input[name=switch]').on('input',function(){
+        if($(this).val()==1){
+            $('.expression').css({
+                '--bs-inset': 'inset',
+            });
+        }else{
+            $('.expression').css({
+                '--bs-inset': '',
+            });
         };
-    });    
+    });
 });
+function input_range_change(ipt1, ipt2) {
+    $(ipt1).on('input', function () {
+        $(ipt2).val(this.value);
+    });
+    $(ipt2).on('input', function () {
+        $(ipt1).val(this.value);
+    });
+};
+var Shadow_box = {
+    width: 10,
+    height: 10,
+    blur: 5,
+    spread: 0,
+    opacity: 0.75,
+    color: { r: 0, g: 0, b: 0 },
+}
