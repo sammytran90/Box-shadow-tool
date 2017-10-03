@@ -70,7 +70,7 @@ span.color-button{
     display: block;
     margin-top: 50px;
     height: 380px;
-    width: 380px;
+    width: 500px;
 }
 .expression{
     background-color: #e7a61a;
@@ -99,7 +99,7 @@ span.color-button{
 }
 .contents{
     height: auto;
-    width: 330px;
+    width: 400px;
     margin: auto;
     font-size: 12px;
     border: 1px solid #d3d3d3;

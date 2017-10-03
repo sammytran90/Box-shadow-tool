@@ -14,6 +14,7 @@ $(document).ready(function () {
             $('#color-custom-1').next('input').val('#' + hex);
             Shadow_box.color = rgb;
             $('.expression').css('--bs-color', 'rgba(' + Shadow_box.color.r + ',' + Shadow_box.color.g + ',' + Shadow_box.color.b + ',' + Shadow_box.opacity + ')');
+            $('.contents span.color').html('rgba(' + Shadow_box.color.r + ',' + Shadow_box.color.g + ',' + Shadow_box.color.b + ',' + Shadow_box.opacity + ')');
         }
     });
     $('#color-custom-2').ColorPicker({
@@ -56,14 +57,19 @@ $(document).ready(function () {
     $('.left input[type=number], .left input[type=text], .left input[type=range]').on('input', function () {
         if ($(this).attr('name') == "width") {
             Shadow_box.width = $(this).val();
+            $('.contents span.width').html(Shadow_box.width +'px');
         } else if ($(this).attr('name') == "Length") {
             Shadow_box.height = $(this).val();
+            $('.contents span.height').html(Shadow_box.height +'px');
         } else if ($(this).attr('name') == "Blur") {
             Shadow_box.blur = $(this).val();
+            $('.contents span.blur').html(Shadow_box.blur +'px');
         } else if ($(this).attr('name') == "Spread") {
             Shadow_box.spread = $(this).val();
+            $('.contents span.spread').html(Shadow_box.spread +'px');
         } else if ($(this).attr('name') == "Opacity") {
             Shadow_box.opacity = $(this).val();
+            $('.contents span.color').html('rgba(' + Shadow_box.color.r + ',' + Shadow_box.color.g + ',' + Shadow_box.color.b + ',' + Shadow_box.opacity + ')');
         }
         $('.expression').css({
             '--bs-width': Shadow_box.width + "px",
