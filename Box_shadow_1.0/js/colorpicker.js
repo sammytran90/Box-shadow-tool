@@ -403,7 +403,7 @@
 												.bind('focus', focus);
 						cal
 							.find('span').bind('mousedown', downIncrement).end()
-							.find('>div.colorpicker_current_color').bind('click', restoreOriginal);
+							// .find('>div.colorpicker_current_color').bind('click', restoreOriginal);
 						options.selector = cal.find('div.colorpicker_color').bind('mousedown', downSelector);
 						options.selectorIndic = options.selector.find('div div');
 						options.el = this;

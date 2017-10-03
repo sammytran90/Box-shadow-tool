@@ -1,0 +1,16 @@
+﻿+ hai giá trị horizontal và vertical lenght thì để giá trị âm được em nhé
+khoảng giá trị là từ -50 < a < 50
+
+
+? border radius thì không có giá trị âm nhé. Yêu cầu validate cho inputinput
+
++ Yêu cầu set max, min cho ô input tương ứng với slideslide
+
+
++ Khi nhập trực tiếp vào các ô đổi màu thì màu ở khung hiển thị không thay đổiđổi
+
+
+? Yêu cầu validate cho input opacity,
+
+
++ Khi click vào khung màu thì giá trị màu trước và sau không thay đổi.
