@@ -172,6 +172,10 @@ input[type=number], input[type=text]{
 input[type=number]{
     width: 45px;
 }
+input[type=number]:invalid{
+    border:1px solid red;
+    background-color: #faffbb;
+}
 input[type=text]{
     width: 60px;
 }
