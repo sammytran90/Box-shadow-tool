@@ -29,8 +29,12 @@ html, body, label{
 .left-sector{
     width: 350px;
     display: block;
-    border-bottom: dotted #b9b9b9;
+    border-bottom: 1px dashed #b9b9b9; 
     margin-left: 20px;
+    /* background-image: linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%);
+    background-position: bottom;
+    background-size: 3px 1px;
+    background-repeat: repeat-x; */
 }
 .input-range, .input-color, .toggle-switch{
     margin: 8px 0px;
