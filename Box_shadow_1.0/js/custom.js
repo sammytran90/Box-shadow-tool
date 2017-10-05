@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    for (var i =0; i< $('.color-button').length; i++){
+    for (var i = 0; i < $('.color-button').length; i++) {
         var obj = $('.color-button');
         obj[i].style.backgroundColor = $(obj[i]).next('input').val();
     };
@@ -53,36 +53,14 @@ $(document).ready(function () {
             $('.expression').css('background-color', '#' + hex);
         }
     });
-    input_range_change($('div#input-range-1 input')[0], $('div#input-range-1 input')[1]);
-    input_range_change($('div#input-range-2 input')[0], $('div#input-range-2 input')[1]);
-    input_range_change($('div#input-range-3 input')[0], $('div#input-range-3 input')[1]);
-    input_range_change($('div#input-range-4 input')[0], $('div#input-range-4 input')[1]);
-    input_range_change($('div#input-range-5 input')[0], $('div#input-range-5 input')[1]);
-    $('.left input[type=number], .left input[type=text], .left input[type=range]').on('input', function () {
-        if ($(this).attr('name') == "width") {            
-            Shadow_box.width = $(this).val();
-            $('.contents span.width').html(Shadow_box.width + 'px');
-        } else if ($(this).attr('name') == "Length") {
-            Shadow_box.height = $(this).val();
-            $('.contents span.height').html(Shadow_box.height + 'px');
-        } else if ($(this).attr('name') == "Blur") {
-            Shadow_box.blur = $(this).val();
-            $('.contents span.blur').html(Shadow_box.blur + 'px');
-        } else if ($(this).attr('name') == "Spread") {
-            Shadow_box.spread = $(this).val();
-            $('.contents span.spread').html(Shadow_box.spread + 'px');
-        } else if ($(this).attr('name') == "Opacity") {
-            Shadow_box.opacity = $(this).val();
-            $('.contents span.color').html('rgba(' + Shadow_box.color.r + ',' + Shadow_box.color.g + ',' + Shadow_box.color.b + ',' + Shadow_box.opacity + ')');
-        }
-        $('.expression').css({
-            '--bs-width': Shadow_box.width + "px",
-            '--bs-height': Shadow_box.height + "px",
-            '--bs-blur': Shadow_box.blur + "px",
-            '--bs-spread': Shadow_box.spread + "px",
-            '--bs-color': 'rgba(' + Shadow_box.color.r + ',' + Shadow_box.color.g + ',' + Shadow_box.color.b + ',' + Shadow_box.opacity + ')',
-        });
-    });
+    input_change($('div#input-range-1 input')[0], $('div#input-range-1 input')[1]);
+    input_change($('div#input-range-2 input')[0], $('div#input-range-2 input')[1]);
+    input_change($('div#input-range-3 input')[0], $('div#input-range-3 input')[1]);
+    input_change($('div#input-range-4 input')[0], $('div#input-range-4 input')[1]);
+    input_change($('div#input-range-5 input')[0], $('div#input-range-5 input')[1]);
+    $('.left input[type=number]').focusout(input_number_change);
+    $('.left input[type=range]').on('input', input_range_change);
+
     $('.left input[name=switch]').on('input', function () {
         if ($(this).val() == 1) {
             $('.expression').css({
@@ -97,7 +75,7 @@ $(document).ready(function () {
     change_color('div.colorpicker_current_color');
     change_color('div.colorpicker_new_color');
 });
-function input_range_change(ipt1, ipt2) {
+function input_change(ipt1, ipt2) {
     $(ipt1).on('input', function () {
         $(ipt2).val(this.value);
     });
@@ -126,3 +104,75 @@ function change_color(obj) {
         };
     });
 };
+function input_number_change() {
+    if ($(this).attr('name') == "width") {
+        if (Math.abs($(this).val()) > 50) {
+            var correct_value = $(this).val() / Math.abs($(this).val()) * 50;
+            $(this).val(correct_value);
+        };
+        Shadow_box.width = $(this).val();
+        $('.contents span.width').html(Shadow_box.width + 'px');
+    } else if ($(this).attr('name') == "Length") {
+        if (Math.abs($(this).val()) > 50) {
+            var correct_value = $(this).val() / Math.abs($(this).val()) * 50;
+            $(this).val(correct_value);
+        };
+        Shadow_box.height = $(this).val();
+        $('.contents span.height').html(Shadow_box.height + 'px');
+    } else if ($(this).attr('name') == "Blur") {
+        if ($(this).val() > 20) {
+            $(this).val(20);
+        } else if ($(this).val() < 0) {
+            $(this).val(0);
+        };
+        Shadow_box.blur = $(this).val();
+        $('.contents span.blur').html(Shadow_box.blur + 'px');
+    } else if ($(this).attr('name') == "Spread") {
+        if (Math.abs($(this).val()) > 30) {
+            var correct_value = $(this).val() / Math.abs($(this).val()) * 30;
+            $(this).val(correct_value);
+        };
+        Shadow_box.spread = $(this).val();
+        $('.contents span.spread').html(Shadow_box.spread + 'px');
+    } else if ($(this).attr('name') == "Opacity") {
+        if ($(this).val() > 1) {
+            $(this).val(1);
+        } else if ($(this).val() < 0) {
+            $(this).val(0);
+        };
+        Shadow_box.opacity = $(this).val();
+        $('.contents span.color').html('rgba(' + Shadow_box.color.r + ',' + Shadow_box.color.g + ',' + Shadow_box.color.b + ',' + Shadow_box.opacity + ')');
+    };
+    $('.expression').css({
+        '--bs-width': Shadow_box.width + "px",
+        '--bs-height': Shadow_box.height + "px",
+        '--bs-blur': Shadow_box.blur + "px",
+        '--bs-spread': Shadow_box.spread + "px",
+        '--bs-color': 'rgba(' + Shadow_box.color.r + ',' + Shadow_box.color.g + ',' + Shadow_box.color.b + ',' + Shadow_box.opacity + ')',
+    });
+};
+function input_range_change() {
+    if ($(this).attr('name') == "width") {
+        Shadow_box.width = $(this).val();
+        $('.contents span.width').html(Shadow_box.width + 'px');
+    } else if ($(this).attr('name') == "Length") {
+        Shadow_box.height = $(this).val();
+        $('.contents span.height').html(Shadow_box.height + 'px');
+    } else if ($(this).attr('name') == "Blur") {
+        Shadow_box.blur = $(this).val();
+        $('.contents span.blur').html(Shadow_box.blur + 'px');
+    } else if ($(this).attr('name') == "Spread") {
+        Shadow_box.spread = $(this).val();
+        $('.contents span.spread').html(Shadow_box.spread + 'px');
+    } else if ($(this).attr('name') == "Opacity") {
+        Shadow_box.opacity = $(this).val();
+        $('.contents span.color').html('rgba(' + Shadow_box.color.r + ',' + Shadow_box.color.g + ',' + Shadow_box.color.b + ',' + Shadow_box.opacity + ')');
+    }
+    $('.expression').css({
+        '--bs-width': Shadow_box.width + "px",
+        '--bs-height': Shadow_box.height + "px",
+        '--bs-blur': Shadow_box.blur + "px",
+        '--bs-spread': Shadow_box.spread + "px",
+        '--bs-color': 'rgba(' + Shadow_box.color.r + ',' + Shadow_box.color.g + ',' + Shadow_box.color.b + ',' + Shadow_box.opacity + ')',
+    });
+}
