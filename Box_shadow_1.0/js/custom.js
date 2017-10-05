@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    for (var i =0; i< $('.color-button').length; i++){
+        var obj = $('.color-button');
+        obj[i].style.backgroundColor = $(obj[i]).next('input').val();
+    };
     $('#color-custom-1').ColorPicker({
         color: '#0000ff',
         onShow: function (colpkr) {
@@ -55,7 +59,7 @@ $(document).ready(function () {
     input_range_change($('div#input-range-4 input')[0], $('div#input-range-4 input')[1]);
     input_range_change($('div#input-range-5 input')[0], $('div#input-range-5 input')[1]);
     $('.left input[type=number], .left input[type=text], .left input[type=range]').on('input', function () {
-        if ($(this).attr('name') == "width") {
+        if ($(this).attr('name') == "width") {            
             Shadow_box.width = $(this).val();
             $('.contents span.width').html(Shadow_box.width + 'px');
         } else if ($(this).attr('name') == "Length") {
