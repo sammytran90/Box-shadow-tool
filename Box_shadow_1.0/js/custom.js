@@ -63,10 +63,12 @@ $(document).ready(function () {
 
     $('.left input[name=switch]').on('input', function () {
         if ($(this).val() == 1) {
+            $('span.out-in').html('inset');
             $('.expression').css({
                 '--bs-inset': 'inset',
             });
         } else {
+            $('span.out-in').html('');
             $('.expression').css({
                 '--bs-inset': '',
             });
@@ -109,6 +111,8 @@ function input_number_change() {
         if (Math.abs($(this).val()) > 50) {
             var correct_value = $(this).val() / Math.abs($(this).val()) * 50;
             $(this).val(correct_value);
+        } else {
+            $(this).val(parseInt($(this).val(), 10));
         };
         Shadow_box.width = $(this).val();
         $('.contents span.width').html(Shadow_box.width + 'px');
@@ -116,6 +120,8 @@ function input_number_change() {
         if (Math.abs($(this).val()) > 50) {
             var correct_value = $(this).val() / Math.abs($(this).val()) * 50;
             $(this).val(correct_value);
+        }else {
+            $(this).val(parseInt($(this).val(), 10));
         };
         Shadow_box.height = $(this).val();
         $('.contents span.height').html(Shadow_box.height + 'px');
@@ -124,6 +130,8 @@ function input_number_change() {
             $(this).val(20);
         } else if ($(this).val() < 0) {
             $(this).val(0);
+        }else {
+            $(this).val(parseInt($(this).val(), 10));
         };
         Shadow_box.blur = $(this).val();
         $('.contents span.blur').html(Shadow_box.blur + 'px');
@@ -131,6 +139,8 @@ function input_number_change() {
         if (Math.abs($(this).val()) > 30) {
             var correct_value = $(this).val() / Math.abs($(this).val()) * 30;
             $(this).val(correct_value);
+        }else {
+            $(this).val(parseInt($(this).val(), 10));
         };
         Shadow_box.spread = $(this).val();
         $('.contents span.spread').html(Shadow_box.spread + 'px');
@@ -139,6 +149,8 @@ function input_number_change() {
             $(this).val(1);
         } else if ($(this).val() < 0) {
             $(this).val(0);
+        }else {
+            $(this).val('0' + $(this).val().replace(/^0+/, ''));
         };
         Shadow_box.opacity = $(this).val();
         $('.contents span.color').html('rgba(' + Shadow_box.color.r + ',' + Shadow_box.color.g + ',' + Shadow_box.color.b + ',' + Shadow_box.opacity + ')');
